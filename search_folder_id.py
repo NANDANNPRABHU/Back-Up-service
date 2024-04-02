@@ -5,7 +5,7 @@ from googleapiclient.discovery import build
 import os.path
 import pickle
 
-SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly']
+SCOPES = ['https://www.googleapis.com/auth/drive']
 
 def main():
     creds = None
@@ -23,21 +23,22 @@ def main():
             pickle.dump(creds, token)
 
     service = build('drive', 'v3', credentials=creds)
-    
-    results = service.files().list(
 
-        pageSize=100,
-        fields="nextPageToken, files(id, name, mimeType)",
-        q="'1eJV8ueYF7fLQiIHzC-BG52SiVbvrLC72' in parents").execute()  # Adjusted query to exclude "Shared with Me"
+    # Replace 'YourFolderName' with the actual name of the folder you're searching for
+    folder_name = input()
+    results = service.files().list(
+        pageSize=10,
+        fields="nextPageToken, files(id, name)",
+        q="mimeType='application/vnd.google-apps.folder' and name = '{}' and trashed = false".format(folder_name)
+    ).execute()
     items = results.get('files', [])
 
     if not items:
-        print('No files or folders found.')
+        print('No folders found with the name "{}".'.format(folder_name))
     else:
-        print('Files and Folders:')
+        print('Folders named "{}":'.format(folder_name))
         for item in items:
-            itemType = "Folder" if item['mimeType'] == "application/vnd.google-apps.folder" else "File"
-            print(u'{0} ({1}) - {2}'.format(item['name'], item['id'], itemType))
+            print(u'{0} (ID: {1})'.format(item['name'], item['id']))
 
 if __name__ == '__main__':
     main()
