@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - "A:/6th sem/CC/miniproject/Back-Up-service/backup:/usr/src/app"
+    # if you need additional volumes to map the current directory as well, you can add:
+    # - .:/usr/src/app
+
