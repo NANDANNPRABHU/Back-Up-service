@@ -28,7 +28,7 @@ def main():
 
         pageSize=100,
         fields="nextPageToken, files(id, name, mimeType)",
-        q="'1eJV8ueYF7fLQiIHzC-BG52SiVbvrLC72' in parents").execute()  # Adjusted query to exclude "Shared with Me"
+        q="'1405ZtnKdWPrRXCd1Z3zFhLT7wtnnFKt6' in parents").execute()  # Adjusted query to exclude "Shared with Me"
     items = results.get('files', [])
 
     if not items:
