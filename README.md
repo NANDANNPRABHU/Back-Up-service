@@ -44,7 +44,7 @@ python get_token.py
 - Create a folder in your Google Drive to store the backups.
 - Run the `get_folder_id.py`, enter your folder name to get the folder ID, and it will generate `.env` file with the folder ID.
 ```bash
-  python get_folder_id.py
+python get_folder_id.py
 ```
 
 ### Step 5: Build Docker Image
