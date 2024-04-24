@@ -35,11 +35,17 @@ pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-pyt
 ```
 
 Run the `get_token.py` script to get authorized with Google.
+```bash
+python get_token.py
+```
 
 ### Step 4: Create Google Drive Folder
 
 - Create a folder in your Google Drive to store the backups.
 - Run the `get_folder_id.py`, enter your folder name to get the folder ID, and it will generate `.env` file with the folder ID.
+  ```bash
+  python get_folder_id.py
+```
 
 ### Step 5: Build Docker Image
 
