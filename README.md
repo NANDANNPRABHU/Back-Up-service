@@ -30,6 +30,10 @@ services:
 
 ### Step 3: Authorization
 
+```bash
+pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client python-dotenv
+```
+
 Run the `get_token.py` script to get authorized with Google.
 
 ### Step 4: Create Google Drive Folder
