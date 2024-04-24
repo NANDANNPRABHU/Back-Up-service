@@ -4,7 +4,7 @@ services:
   back-up-service:
     image: back-up-service:latest
     volumes:
-      - A:/6th sem/CC/miniproject/Back-Up-service/backup:/usr/src/app/files
+      - A:/GitHub/Back-Up-service/backup:/usr/src/app/files
     restart: unless-stopped
     deploy:
       replicas: 1
