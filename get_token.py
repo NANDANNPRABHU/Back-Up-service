@@ -4,7 +4,7 @@ from google.auth.transport.requests import Request
 import os.path
 import pickle
 
-SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly']
+SCOPES = ['https://www.googleapis.com/auth/drive']
 
 def generate_credentials():
     if os.path.exists('token.pickle'):
