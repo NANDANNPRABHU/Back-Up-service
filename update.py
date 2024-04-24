@@ -6,6 +6,10 @@ from googleapiclient.http import MediaFileUpload
 import os
 import os.path
 import pickle
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 SCOPES = ['https://www.googleapis.com/auth/drive']
 
@@ -27,7 +31,12 @@ def main():
 
     service = build('drive', 'v3', credentials=creds)
 
-    folder_id = '1405ZtnKdWPrRXCd1Z3zFhLT7wtnnFKt6'  # ID of the 'backup' folder in Drive
+    folder_id = os.getenv('FOLDER_ID')  # Read folder ID from environment variable
+
+    if not folder_id:
+        print("FOLDER_ID not found in .env file. Please make sure it's properly set.")
+        return
+
     local_folder_path = '/usr/src/app/files/'  # Path to the local backup folder
 
     # Get all files in the Drive folder

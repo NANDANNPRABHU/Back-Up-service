@@ -4,6 +4,10 @@ from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
 import os.path
 import pickle
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 SCOPES = ['https://www.googleapis.com/auth/drive']
 
@@ -25,7 +29,7 @@ def main():
     service = build('drive', 'v3', credentials=creds)
 
     # Replace 'YourFolderName' with the actual name of the folder you're searching for
-    folder_name = input()
+    folder_name = input("Enter folder name: ")
     results = service.files().list(
         pageSize=10,
         fields="nextPageToken, files(id, name)",
@@ -39,6 +43,9 @@ def main():
         print('Folders named "{}":'.format(folder_name))
         for item in items:
             print(u'{0} (ID: {1})'.format(item['name'], item['id']))
+            # Save folder ID to .env file
+            with open('.env', 'a') as env_file:
+                env_file.write(f"\nFOLDER_ID={item['id']}")
 
 if __name__ == '__main__':
     main()

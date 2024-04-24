@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir google-api-python-client google-auth-oauthlib Fla
 # Copy the local directory contents into the container
 COPY update.py .
 COPY token.pickle .
-
+COPY .env .
 # COPY drive_connection.py .
 # COPY app.py .
 # COPY token.pickle .
