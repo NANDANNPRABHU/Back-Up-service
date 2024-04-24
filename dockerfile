@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
 
 # Install Python dependencies
 RUN pip install --no-cache-dir google-api-python-client google-auth-oauthlib Flask
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the local directory contents into the container
 COPY update.py .
