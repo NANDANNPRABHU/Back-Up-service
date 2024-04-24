@@ -22,8 +22,8 @@ services:
     image: alpine
     command: ["sh", "-c", "while true; do sleep 60 && docker-compose -f /path/to/your/docker-compose.yaml up -d back-up-service; done"]
     restart: always
-    volumes:
-      - /path/to/your/docker-compose.yaml:/path/to/your/docker-compose.yaml:ro
+    # volumes:
+    #   - /path/to/your/docker-compose.yaml:/path/to/your/docker-compose.yaml:ro
     deploy:
       replicas: 1
       placement:

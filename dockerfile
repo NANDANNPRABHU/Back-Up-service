@@ -21,7 +21,7 @@ COPY .env .
 # COPY token.pickle .
 
 # Make port 80 available to the world outside this container
-EXPOSE 80
+# EXPOSE 80
 
 # Run app.py when the container launches
 CMD ["python", "./update.py"]
