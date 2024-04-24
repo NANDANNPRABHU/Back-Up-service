@@ -1,12 +1,31 @@
 version: '3.8'
 
 services:
-  app:
-    build: .
-    ports:
-      - "80:80"
+  back-up-service:
+    image: backup:latest
     volumes:
-      - "A:/6th sem/CC/miniproject/Back-Up-service/backup:/usr/src/app"
-    # if you need additional volumes to map the current directory as well, you can add:
-    # - .:/usr/src/app
+      - A:/6th sem/CC/miniproject/new/backup:/usr/src/app/files
+    restart: unless-stopped
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+    # Define a health check if necessary
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost/health"]
+    #   interval: 1m
+    #   timeout: 10s
+    #   retries: 3
 
+  cron:
+    image: alpine
+    # command: ["sh", "-c", "while true; do sleep 60 && docker-compose -f /path/to/your/docker-compose.yaml up -d back-up-service; done"]
+    restart: always
+    # volumes:
+    #   - /path/to/your/docker-compose.yaml:/path/to/your/docker-compose.yaml:ro
+    # deploy:
+    #   replicas: 1
+    #   placement:
+    #     constraints:
+    #       - node.role == manager
