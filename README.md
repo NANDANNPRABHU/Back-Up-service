@@ -86,6 +86,7 @@ services:
     image: back-up-service:latest
     volumes:
       - /path/to/your/directory:/usr/src/app/files
+```
 
 
 ### Step 3: Authorization
@@ -103,7 +104,7 @@ Execute the following command to build the Docker image:
 
 ```bash
 docker build -t back-up-service:latest .
-
+```
 
 ### Step 6: Launch the Service
 
@@ -111,6 +112,7 @@ Start the service using Docker Compose:
 
 ```bash
 docker compose up
+```
 
 
 ### Step 7: Modify the Local Folder
