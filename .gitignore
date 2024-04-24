@@ -1,0 +1,7 @@
+# Ignore specific files
+.env
+token.pickle
+credentials.json
+
+# Ignore specific folder
+extras/
